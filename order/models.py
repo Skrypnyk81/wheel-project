@@ -18,6 +18,7 @@ class Wheel(models.Model):
     speed = models.CharField(verbose_name="Velocità", max_length=2, null=True, blank=True)
     season = models.CharField(verbose_name="Stagione", max_length=50, choices=SEASON_CHOICES, default="Tutto", null=True, blank=True)
     brand = models.CharField(verbose_name="Marca", max_length=50, null=True, blank=True)
+    model = models.CharField(verbose_name="Modello", max_length=50, null=True, blank=True)
     runflat = models.BooleanField(null=True, blank=True)
     dot = models.IntegerField(null=True, blank=True)
     reinforced = models.BooleanField(null=True, blank=True)
