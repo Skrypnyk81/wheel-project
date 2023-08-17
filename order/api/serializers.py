@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from order.models import WheelsImage, Wheel
+from order.models import WheelsImage, Wheel, Order
 
 
 class WheelsImageSerializers(serializers.ModelSerializer):
@@ -31,7 +31,16 @@ class WheelSerializers(serializers.ModelSerializer):
 
 
 class WheelListSerializers(serializers.ModelSerializer):
+    images = WheelsImageSerializers(many=True, read_only=True)
 
     class Meta:
         model = Wheel
-        fields = ["id", "brand", "model", "width", "ratio", "diameter", "tread", "price"]
+        fields = ["id", "brand", "model", "width", "ratio", "diameter", "tread", "price", "images"]
+
+
+class OrderSerializers(serializers.ModelSerializer):
+    wheel = serializers.PrimaryKeyRelatedField(queryset=Wheel.objects.all())
+
+    class Meta:
+        model = Order
+        fields = "__all__"
