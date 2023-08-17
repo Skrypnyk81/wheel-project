@@ -2,10 +2,11 @@ from rest_framework.generics import CreateAPIView, GenericAPIView, ListAPIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import get_object_or_404
 
-from order.models import Wheel
-from order.api.serializers import WheelSerializers, WheelListSerializers
-from rest_framework import permissions, status
+from order.models import Wheel, Order
+from order.api.serializers import WheelSerializers, WheelListSerializers, OrderSerializers
+from rest_framework import permissions
 
 
 class WheelCreateView(CreateAPIView):
@@ -37,3 +38,8 @@ class FilterListAPIView(APIView):
         filter_result = Wheel.objects.filter(**filter_wheel)
         serializer = WheelListSerializers(filter_result, many=True)
         return Response(serializer.data)
+
+
+class OrderCreateAPIView(CreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializers
