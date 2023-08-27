@@ -44,7 +44,7 @@ class WheelsImage(models.Model):
 
 
 class Order(models.Model):
-    wheel = models.OneToOneField(Wheel, on_delete=models.DO_NOTHING)
+    wheel = models.OneToOneField(Wheel, on_delete=models.DO_NOTHING, related_name="order")
     first_name = models.CharField(verbose_name="Nome", max_length=20, null=True, blank=True)
     second_name = models.CharField(verbose_name="Cognome", max_length=50, null=True, blank=True)
     phone = models.CharField(verbose_name="Telefono", max_length=200, null=True, blank=True)
