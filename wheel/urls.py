@@ -18,7 +18,10 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from core.views import IndexTemplateView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/wheels/', include('order.api.urls')),
+    path('', IndexTemplateView.as_view(), name="entry-point"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
