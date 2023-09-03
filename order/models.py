@@ -25,7 +25,7 @@ class Wheel(models.Model):
     load_c = models.BooleanField(null=True, blank=True)
     on_sale = models.BooleanField(verbose_name="In vendita", null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
-    slug = models.CharField(max_length=80, null=True, blank=True)
+    slug = models.CharField(max_length=80, unique=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.brand)
