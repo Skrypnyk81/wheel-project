@@ -1,6 +1,6 @@
 const baseEndpoint="/api/v1/wheels/"
 
-const enpoints = {
+const endpoints = {
     createWheel: `${baseEndpoint}create-wheel/`,
     detailWheel: `${baseEndpoint}detail-wheel/`,
     listWheel: `${baseEndpoint}list-wheel/`,
@@ -8,4 +8,4 @@ const enpoints = {
     createOrder: `${baseEndpoint}create-order/`,
 };
 
-export{ enpoints }
+export{ endpoints }
