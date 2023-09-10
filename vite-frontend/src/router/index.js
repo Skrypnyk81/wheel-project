@@ -9,6 +9,12 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
+    {
+      path: "/wheel/:id",
+      name: "wheel",
+      component: () => import("../views/WheelDetail.vue"),
+      props: true
+    },
   ]
 })
 
