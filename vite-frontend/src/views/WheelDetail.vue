@@ -41,11 +41,15 @@ import { endpoints } from '../common/endpoints';
         }
     },
     methods: {
+        setPageTitle(title) {
+            document.title = title;
+        },
         async getWheelDetail() {
             const endpoint = `${endpoints["detailWheel"]}${this.id}/`;
             try {
                 const response = await axios.get(endpoint);
                 this.wheel = response.data;
+                this.setPageTitle(response.data.slug);
             } catch (error) {
                 console.log(error);
                 this.wheel = null;
