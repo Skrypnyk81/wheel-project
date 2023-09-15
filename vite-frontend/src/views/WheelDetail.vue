@@ -1,6 +1,21 @@
 <template>
-    <h1>Ruota singola</h1>
-    {{ wheel }}
+    <div class="container">
+        <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div v-for="(image, index) in wheel.images" :key="index" class="carousel-item" :class="{ 'active': index === 0 }">
+                <img :src="image.image" class="d-block w-100" :alt="image.id">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    </div>
 </template>
 
 <script>
