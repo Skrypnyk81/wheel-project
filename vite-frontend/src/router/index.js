@@ -15,6 +15,12 @@ const router = createRouter({
       component: () => import("../views/WheelDetail.vue"),
       props: true
     },
+    {
+      path: "/order/:id",
+      name: "order",
+      component: () => import("../views/OrderWheel.vue"),
+      props: true
+    },
   ]
 })
 
