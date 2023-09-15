@@ -30,7 +30,8 @@
                 <p>Reinforced: {{ wheel.reinforced }}</p>
                 <p>Load C: {{ wheel.load_c }}</p>
                 <p>Prezzo: {{ wheel.price }}</p>
-                <router-link :to="`/wheel/${wheel.id}`" class="btn btn-primary">Ordina</router-link>
+                
+                <router-link :to="`/order/${wheel.id}`" class="btn btn-primary">Ordina</router-link>
             </div>
         </div>
         <div v-else>
