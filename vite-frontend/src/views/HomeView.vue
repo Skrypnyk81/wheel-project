@@ -12,6 +12,7 @@
               <h5 class="card-title">{{ wheel.brand }}</h5>
               <p class="card-text">Largezza: {{ wheel.width }}</p>
               <p class="card-text">Prezzo: {{ wheel.price }}</p>
+              <router-link :to="`/wheel/${wheel.id}`" class="btn btn-primary">Dettagli</router-link>
             </div>
           </div>
         </div>
