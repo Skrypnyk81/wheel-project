@@ -18,7 +18,7 @@ class WheelSerializers(serializers.ModelSerializer):
     class Meta:
         model = Wheel
         fields = ["width", "ratio", "diameter", "price", "load", "speed", "season", "brand", "model", "runflat",
-                  "dot", "reinforced", "load_c", "on_sale", "images", "uploaded_images"]
+                  "dot", "reinforced", "load_c", "on_sale", "images", "uploaded_images", "slug"]
 
     def create(self, validated_data):
         uploaded_images = validated_data.pop("uploaded_images")
@@ -35,7 +35,7 @@ class WheelListSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Wheel
-        fields = ["brand", "model", "width", "ratio", "diameter", "tread", "price", "images"]
+        fields = ["id", "brand", "model", "width", "ratio", "diameter", "tread", "price", "images"]
 
 
 class OrderSerializers(serializers.ModelSerializer):
