@@ -5,7 +5,7 @@
       <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-4">
-            <img :src="wheel.images[0].image" class="card-img-top">
+            <img :src="wheel.images[0].image" class="card-img-top" :alt="wheel.id">
           </div>
           <div class="col-md-8">
             <div class="card-body shadow rounded">
