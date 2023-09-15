@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <div v-if="wheel">
+        <div v-if="wheel" mb-3>
             <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner">
+                <div class="carousel-inner mx-auto">
                     <div v-for="(image, index) in wheel.images" :key="index" class="carousel-item" :class="{ 'active': index === 0 }">
                         <img :src="image.image" class="d-block w-100" :alt="index">
                     </div>
@@ -15,6 +15,22 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
+            </div>
+            <div>
+                <p>Larghezza: {{ wheel.width }}</p>
+                <p>Altezza: {{ wheel.ratio }}</p>
+                <p>Diametro: {{ wheel.diameter }}</p>
+                <p>Battistrada: {{ wheel.tread }}</p>
+                <p>Carico: {{ wheel.load }}</p>
+                <p>Velocità: {{ wheel.speed }}</p>
+                <p>Marca: {{ wheel.brand }}</p>
+                <p>Modello: {{ wheel.model }}</p>
+                <p>runflat: {{ wheel.runflat }}</p>
+                <p>DOT: {{ wheel.dot }}</p>
+                <p>Reinforced: {{ wheel.reinforced }}</p>
+                <p>Load C: {{ wheel.load_c }}</p>
+                <p>Prezzo: {{ wheel.price }}</p>
+                <router-link :to="`/wheel/${wheel.id}`" class="btn btn-primary">Ordina</router-link>
             </div>
         </div>
         <div v-else>
