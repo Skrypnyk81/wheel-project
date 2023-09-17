@@ -2,8 +2,16 @@
   <div>
     <NavbarComponent />
   </div>
-
+  <div class="container">
+    <p>Denys Gomme usate di qualità</p>
+    <p>Spedizione in tutta Italia, con il corriere BRT, <span class="bolded">PAGAMENTO ALLA CONSEGNA</span></p>
+  </div>
   <router-view />
+  <footer class="text-black text-center py-3">
+    <div class="container">
+        <p>© 2023 La Mia Azienda. Tutti i diritti riservati.</p>
+    </div>
+</footer>
 </template>
 
 <script>
@@ -15,3 +23,10 @@ export default {
     }
 }
 </script>
+
+<style>
+.bolded {
+  color: red;
+  text-align: center;
+}
+</style>
