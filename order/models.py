@@ -25,7 +25,7 @@ class Wheel(models.Model):
     slug = models.CharField(max_length=80, unique=True)
 
     def __str__(self):
-        return str(self.brand)
+        return f"{self.brand}-{self.dot}"
 
 
 class WheelsImage(models.Model):
