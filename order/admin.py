@@ -12,7 +12,7 @@ class OrderInline(admin.StackedInline):
     extra = 0  # set to 0 if you don't want empty forms
     readonly_fields = [
         'first_name', 'second_name', 'phone', 'street',
-        'city', 'state', 'postal_code', 'country', 'created_at'
+        'city', 'state', 'postal_code', 'email', 'created_at'
     ]
 
 
