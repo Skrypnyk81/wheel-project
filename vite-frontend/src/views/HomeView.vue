@@ -10,8 +10,10 @@
           <div class="col-md-8">
             <div class="card-body shadow rounded">
               <h5 class="card-title">{{ wheel.brand }}</h5>
-              <p class="card-text">Largezza: {{ wheel.width }}</p>
-              <p class="card-text">Prezzo: {{ wheel.price }}</p>
+              <p class="card-text">Misura: {{ wheel.width }}/{{ wheel.ratio }}/{{ wheel.diameter }} {{ wheel.load }}{{ wheel.speed }} {{ wheel.season }}</p>
+              <p class="card-text">Battistrada: {{ wheel.tread }}%</p>
+              <p class="card-text">Marca: {{ wheel.brand }} {{ wheel.quantity }} {{ wheel.dot }}</p>
+              <p class="card-text">Prezzo: {{ wheel.price }} €</p>
               <router-link :to="`/wheel/${wheel.id}`" class="btn btn-primary">Dettagli</router-link>
             </div>
           </div>
