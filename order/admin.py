@@ -17,6 +17,7 @@ class OrderInline(admin.StackedInline):
 
 
 class CustomerAdmin(admin.ModelAdmin):
+    exclude = ('slug',)
     inlines = [ImagesInLine, OrderInline]
 
 
