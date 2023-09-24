@@ -34,7 +34,7 @@ class WheelListSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Wheel
-        fields = ["id", "brand", "width", "ratio", "diameter", "tread", "price", "images"]
+        exclude = ["on_sale", "created_at"]
 
 
 class OrderSerializers(serializers.ModelSerializer):
