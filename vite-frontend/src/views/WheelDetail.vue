@@ -1,38 +1,38 @@
 <template>
-    <div class="container">
-        <div v-if="wheel" mb-3>
-            <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner mx-auto">
-                    <div v-for="(image, index) in wheel.images" :key="index" class="carousel-item" :class="{ 'active': index === 0 }">
-                        <img :src="image.image" class="d-block w-100" :alt="index">
+    <div class="container mt-4">
+        <div v-if="wheel">
+            <div class="col-md">
+            <div class="card-body shadow rounded">
+              <h5 class="card-title">{{ wheel.brand }}</h5>
+              <p class="card-text">Misura: {{ wheel.width }}/{{ wheel.ratio }}/{{ wheel.diameter }} {{ wheel.load }}{{ wheel.speed }} {{ wheel.season }}</p>
+              <p class="card-text">Battistrada: {{ wheel.tread }}%</p>
+              <p class="card-text">Marca: {{ wheel.brand }} {{ wheel.quantity }} {{ wheel.dot }}</p>
+              <p class="card-text">Prezzo: {{ wheel.price }} €</p>
+              <router-link :to="`/order/${wheel.id}`" class="btn btn-primary">Ordina</router-link>
+            </div>
+          </div>
+            <!-- Elenco di immagini in fila -->
+            <Carousel id="gallery" :items-to-show="1" :wrap-around="false" v-model="currentSlide">
+                <slide v-for="(image, index) in wheel.images" :key="index" class="me-2 mb-2">
+                    <div class="carousel__item">
+                        <img :src="image.image"
+                        :alt="index">
                     </div>
+                </slide>
+            </carousel>
+            <Carousel
+                id="thumbnails"
+                :items-to-show="3"
+                :wrap-around="true"
+                v-model="currentSlide"
+                ref="carousel"
+            >
+                <Slide v-for="(image, index) in wheel.images" :key="index" class="me-2 mb-2">
+                <div class="carousel__item"  @click="slideTo(index - 1)">
+                    <img :src="image.image" :alt="index" class="img-ridimensionata">
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-            <div>
-                <p>Larghezza: {{ wheel.width }}</p>
-                <p>Altezza: {{ wheel.ratio }}</p>
-                <p>Diametro: {{ wheel.diameter }}</p>
-                <p>Battistrada: {{ wheel.tread }}</p>
-                <p>Carico: {{ wheel.load }}</p>
-                <p>Velocità: {{ wheel.speed }}</p>
-                <p>Marca: {{ wheel.brand }}</p>
-                <p>Modello: {{ wheel.model }}</p>
-                <p>runflat: {{ wheel.runflat }}</p>
-                <p>DOT: {{ wheel.dot }}</p>
-                <p>Reinforced: {{ wheel.reinforced }}</p>
-                <p>Load C: {{ wheel.load_c }}</p>
-                <p>Prezzo: {{ wheel.price }}</p>
-                
-                <router-link :to="`/order/${wheel.id}`" class="btn btn-primary">Ordina</router-link>
-            </div>
+                </Slide>
+            </Carousel>
         </div>
         <div v-else>
             <h1 class="text-danger text-center">Le ruote non ci sono!</h1>
@@ -43,38 +43,67 @@
 <script>
 import { axios } from '../common/api.service';
 import { endpoints } from '../common/endpoints';
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Navigation } from 'vue3-carousel';
 
-    export default {
+export default {
         name: "WheelDetail",
+        components: {
+            Carousel,
+            Slide,
+        },
         props: {
             id: {
                 type: String,
                 required: true
             }
         },
-    data() {
-        return {
-            wheel: {}
-        }
-    },
-    methods: {
-        setPageTitle(title) {
-            document.title = title;
-        },
-        async getWheelDetail() {
-            const endpoint = `${endpoints["detailWheel"]}${this.id}/`;
-            try {
-                const response = await axios.get(endpoint);
-                this.wheel = response.data;
-                this.setPageTitle(response.data.slug);
-            } catch (error) {
-                console.log(error);
-                this.wheel = null;
+        data() {
+            return {
+                wheel: {},
+                currentSlide: 0,
             }
+        },
+        methods: {
+            setPageTitle(title) {
+                document.title = title;
+            },
+            async getWheelDetail() {
+                const endpoint = `${endpoints["detailWheel"]}${this.id}/`;
+                try {
+                    const response = await axios.get(endpoint);
+                    this.wheel = response.data;
+                    this.setPageTitle(response.data.slug);
+                } catch (error) {
+                    console.log(error);
+                    this.wheel = null;
+                }
+            },
+            slideTo(val) {
+                this.currentSlide = val
+                },
+        },
+        created() {
+            this.getWheelDetail()
         }
-    },
-    created() {
-        this.getWheelDetail()
-        }
-    }  
+}  
 </script>
+<style>
+.carousel__item {
+  min-height: 200px;
+  width: 100%;
+  background-color: white;
+  color: var(--vc-clr-white);
+  font-size: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-ridimensionata {
+  max-width: 100%; /* L'immagine può essere larga al massimo il 100% del suo contenitore */
+  max-height: 500px; /* L'immagine può essere alta al massimo 500px */
+  display: block; /* Facoltativo: per centrare l'immagine se è più piccola del suo contenitore */
+  margin: 0 auto; /* Facoltativo: per centrare l'immagine se è più piccola del suo contenitore */
+}
+</style>
