@@ -22,10 +22,14 @@ class Wheel(models.Model):
     price = models.DecimalField(verbose_name="Prezzo", max_digits=7, decimal_places=2, null=True, blank=True)
     on_sale = models.BooleanField(verbose_name="In vendita", null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
-    slug = models.CharField(max_length=80, unique=True)
+    slug = models.CharField(max_length=80, null=True)
 
     def __str__(self):
         return f"{self.brand}-{self.dot}"
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.brand) + "-" + str(self.dot)
+        super().save(*args, **kwargs)
 
 
 class WheelsImage(models.Model):
