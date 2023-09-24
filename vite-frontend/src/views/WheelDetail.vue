@@ -12,10 +12,11 @@
             </div>
           </div>
             <!-- Elenco di immagini in fila -->
-            <Carousel id="gallery" :items-to-show="1" :wrap-around="false" v-model="currentSlide">
+            <Carousel id="WheelDetail" :items-to-show="1" :wrap-around="false" v-model="currentSlide">
                 <slide v-for="(image, index) in wheel.images" :key="index" class="me-2 mb-2">
                     <div class="carousel__item">
-                        <img :src="image.image"
+                        <img class="img-ridimensionata" 
+                        :src="image.image"
                         :alt="index">
                     </div>
                 </slide>
@@ -28,9 +29,9 @@
                 ref="carousel"
             >
                 <Slide v-for="(image, index) in wheel.images" :key="index" class="me-2 mb-2">
-                <div class="carousel__item"  @click="slideTo(index - 1)">
-                    <img :src="image.image" :alt="index" class="img-ridimensionata">
-                </div>
+                    <div class="carousel__item"  @click="slideTo(index)">
+                        <img :src="image.image" :alt="index" class="img-ridimensionata">
+                    </div>
                 </Slide>
             </Carousel>
         </div>
@@ -44,7 +45,7 @@
 import { axios } from '../common/api.service';
 import { endpoints } from '../common/endpoints';
 import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Navigation } from 'vue3-carousel';
+import { Carousel, Slide } from 'vue3-carousel';
 
 export default {
         name: "WheelDetail",
