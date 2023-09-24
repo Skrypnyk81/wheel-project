@@ -1,27 +1,25 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div v-for="wheel in wheels" :key="wheel.id" class="col-md-4">
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img :src="wheel.images[0].image" class="card-img-top" :alt="wheel.id">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body shadow rounded">
-              <h5 class="card-title">{{ wheel.brand }}</h5>
-              <p class="card-text">Misura: {{ wheel.width }}/{{ wheel.ratio }}/{{ wheel.diameter }} {{ wheel.load }}{{ wheel.speed }} {{ wheel.season }}</p>
-              <p class="card-text">Battistrada: {{ wheel.tread }}%</p>
-              <p class="card-text">Marca: {{ wheel.brand }} {{ wheel.quantity }} {{ wheel.dot }}</p>
-              <p class="card-text">Prezzo: {{ wheel.price }} €</p>
-              <router-link :to="`/wheel/${wheel.id}`" class="btn btn-primary">Dettagli</router-link>
+    <div class="container mt-4">
+        <div v-for="diameter in diameters" :key="diameter">
+          <h3 class="mb-3">Diametro: {{ diameter }}</h3>
+          <div class="row">
+            <div class="col-md-4 mb-4" v-for="wheel in filteredWheels(diameter)" :key="wheel.brand">
+              <div class="card-body shadow rounded">
+                <img :src="wheel.images[0]?.image" class="img-fluid img-thumbnail h-50" :alt="wheel.brand" />
+                <div class="card-body">
+                  <h5 class="card-title">{{ wheel.brand }}</h5>
+                  <p class="card-text">Misura: {{ wheel.width }}/{{ wheel.ratio }}/{{ wheel.diameter }}</p>
+                  <p class="card-text">Battistrada: {{ wheel.tread }}%</p>
+                  <p class="card-text">Prezzo: {{ wheel.price }} €</p>
+                  <router-link :to="`/wheel/${wheel.id}`" class="btn btn-primary">Dettagli</router-link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -46,7 +44,16 @@ export default {
         console.log(error);
         alert(error.response.statusText);
       }
-    }
+    },
+    filteredWheels(diameter) {
+      return this.wheels.filter(wheel => wheel.diameter === diameter);
+    },
+  },
+  computed: {
+    diameters() {
+      const diameters = this.wheels.map(wheel => wheel.diameter);
+      return [...new Set(diameters)].sort((a, b) => a - b);
+    },
   },
   created() {
     document.title = "Ruote";
@@ -54,3 +61,10 @@ export default {
   }
 }
 </script>
+
+.img-ridimensionata {
+  max-width: 100%; /* L'immagine può essere larga al massimo il 100% del suo contenitore */
+  max-height: 300px; /* L'immagine può essere alta al massimo 500px */
+  display: block; /* Facoltativo: per centrare l'immagine se è più piccola del suo contenitore */
+  margin: 0 auto; /* Facoltativo: per centrare l'immagine se è più piccola del suo contenitore */
+}
