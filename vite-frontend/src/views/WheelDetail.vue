@@ -15,7 +15,7 @@
             <Carousel id="WheelDetail" :items-to-show="1" :wrap-around="false" v-model="currentSlide">
                 <slide v-for="(image, index) in wheel.images" :key="index" class="me-2 mb-2">
                     <div class="carousel__item">
-                        <img class="img-ridimensionata" 
+                        <img  class="zoon-image"
                         :src="image.image"
                         :alt="index">
                     </div>
@@ -103,8 +103,15 @@ export default {
 }
 .img-ridimensionata {
   max-width: 100%; /* L'immagine può essere larga al massimo il 100% del suo contenitore */
-  max-height: 500px; /* L'immagine può essere alta al massimo 500px */
+  max-height: 300px; /* L'immagine può essere alta al massimo 500px */
   display: block; /* Facoltativo: per centrare l'immagine se è più piccola del suo contenitore */
   margin: 0 auto; /* Facoltativo: per centrare l'immagine se è più piccola del suo contenitore */
+}
+.zoon-image {
+    max-width: 100%;
+    max-height: 500px;
+    display: block; /* Facoltativo: per centrare l'immagine se è più piccola del suo contenitore */
+    margin: 0 auto; /* Facoltativo: per centrare l'immagine se è più piccola del suo contenitore */
+
 }
 </style>
