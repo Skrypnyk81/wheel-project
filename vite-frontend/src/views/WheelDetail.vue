@@ -2,15 +2,17 @@
     <div class="container mt-4">
         <div v-if="wheel">
             <div class="col-md">
-            <div class="card-body shadow rounded">
+            <div class="card-body shadow rounded ps-1 pb-1">
               <h5 class="card-title">{{ wheel.brand }}</h5>
+              <br>
               <p class="card-text">Misura: {{ wheel.width }}/{{ wheel.ratio }}/{{ wheel.diameter }} {{ wheel.load }}{{ wheel.speed }} {{ wheel.season }}</p>
               <p class="card-text">Battistrada: {{ wheel.tread }}%</p>
               <p class="card-text">Marca: {{ wheel.brand }} {{ wheel.quantity }} {{ wheel.dot }}</p>
               <p class="card-text">Prezzo: {{ wheel.price }} €</p>
-              <router-link :to="`/order/${wheel.id}`" class="btn btn-primary">Ordina</router-link>
+              <router-link :to="`/order/${wheel.id}`" class="btn btn-primary pb-1">Ordina</router-link>
             </div>
           </div>
+          <br>
             <!-- Elenco di immagini in fila -->
             <Carousel id="WheelDetail" :items-to-show="1" :wrap-around="false" v-model="currentSlide">
                 <slide v-for="(image, index) in wheel.images" :key="index" class="me-2 mb-2">

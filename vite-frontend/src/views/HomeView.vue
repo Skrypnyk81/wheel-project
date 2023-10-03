@@ -7,12 +7,13 @@
             <div class="col-md-4 mb-4" v-for="wheel in filteredWheels(diameter)" :key="wheel.brand">
               <div class="card-body shadow rounded">
                 <img :src="wheel.images[0]?.image" class="img-fluid img-thumbnail h-50" :alt="wheel.brand" />
-                <div class="card-body">
+                <div class="card-body ms-1">
                   <h5 class="card-title">{{ wheel.brand }}</h5>
+                  <br>
                   <p class="card-text">Misura: {{ wheel.width }}/{{ wheel.ratio }}/{{ wheel.diameter }}</p>
                   <p class="card-text">Battistrada: {{ wheel.tread }}%</p>
                   <p class="card-text">Prezzo: {{ wheel.price }} €</p>
-                  <router-link :to="`/wheel/${wheel.id}`" class="btn btn-primary">Dettagli</router-link>
+                  <router-link :to="`/wheel/${wheel.id}`" class="btn btn-primary mb-1">Dettagli</router-link>
                 </div>
               </div>
             </div>
