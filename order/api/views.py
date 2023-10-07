@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from rest_framework.generics import CreateAPIView, GenericAPIView, ListAPIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
@@ -43,3 +44,24 @@ class FilterListAPIView(APIView):
 class OrderCreateAPIView(CreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializers
+
+    def perform_create(self, serializer):
+        # Salviamo l'ordine nel database
+        order = serializer.save()
+
+        wheel_instance = Wheel.objects.get(id=order.wheel_id)
+        wheel_instance.on_sale = False
+        wheel_instance.save()
+
+        # Inviamo un'email dopo la creazione
+        self.send_order_email(order)
+
+    def send_order_email(self, order):
+        # Definisci il mittente, il destinatario e il contenuto dell'email
+        subject = f'Grazie per il tuo ordine delle gomme {order.wheel.brand}!'
+        message = 'Il tuo ordine è stato ricevuto e verrà elaborato a breve.'
+        from_email = 'noreply@gomme_usate.com'
+        recipient_list = [order.email]  # Assumendo che "email" sia un campo del tuo modello Order
+
+        # Invia l'email
+        send_mail(subject, message, from_email, recipient_list)

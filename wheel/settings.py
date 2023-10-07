@@ -147,3 +147,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 VITE_BUILD_DIRNAME = "build"
 VITE_STATIC_BUNDLE = BASE_DIR / f"static/{VITE_BUILD_DIRNAME}"
 VITE_LIVE_SERVER = True
+
+# send email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.environ.get('SEND_EMAIL_ORDER')
+EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD_SEND_EMAIL')
