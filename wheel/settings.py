@@ -153,8 +153,8 @@ VITE_LIVE_SERVER = False
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_PORT = 465
-EMAIL_HOST = 'smtp.ionos.it'
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get('SEND_EMAIL_ORDER')
 EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD_SEND_EMAIL')
 
