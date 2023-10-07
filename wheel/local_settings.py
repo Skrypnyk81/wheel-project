@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 # CORS_ALLOWED_ORIGINS = []
@@ -146,7 +146,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Vite - Django connection
 VITE_BUILD_DIRNAME = "build"
 VITE_STATIC_BUNDLE = BASE_DIR / f"static/{VITE_BUILD_DIRNAME}"
-VITE_LIVE_SERVER = False
+VITE_LIVE_SERVER = True
 
 # send email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
