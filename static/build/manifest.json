@@ -11,12 +11,12 @@
       "src/views/WheelDetail.vue",
       "src/views/OrderWheel.vue"
     ],
-    "file": "assets/index-ea5ce9ab.js",
+    "file": "assets/index-ded90911.js",
     "isEntry": true,
     "src": "index.html"
   },
   "src/views/OrderWheel.vue": {
-    "file": "assets/OrderWheel-75462cc8.js",
+    "file": "assets/OrderWheel-3cb903bb.js",
     "imports": [
       "index.html"
     ],
@@ -31,7 +31,7 @@
     "css": [
       "assets/WheelDetail-77a0331d.css"
     ],
-    "file": "assets/WheelDetail-206aa715.js",
+    "file": "assets/WheelDetail-bf638c3d.js",
     "imports": [
       "index.html"
     ],

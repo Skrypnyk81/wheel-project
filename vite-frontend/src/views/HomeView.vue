@@ -62,10 +62,3 @@ export default {
   }
 }
 </script>
-
-.img-ridimensionata {
-  max-width: 100%; /* L'immagine può essere larga al massimo il 100% del suo contenitore */
-  max-height: 300px; /* L'immagine può essere alta al massimo 500px */
-  display: block; /* Facoltativo: per centrare l'immagine se è più piccola del suo contenitore */
-  margin: 0 auto; /* Facoltativo: per centrare l'immagine se è più piccola del suo contenitore */
-}
