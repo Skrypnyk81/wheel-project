@@ -4,3 +4,7 @@ migration:
 
 run:
 	python manage.py runserver
+
+reload:
+	sudo supervisorctl reload
+	sudo systemctl reload nginx
