@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 from dotenv import load_dotenv
+import sentry_sdk
 import os
 load_dotenv()
 
@@ -156,3 +157,15 @@ EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get('SEND_EMAIL_ORDER')
 EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD_SEND_EMAIL')
+
+# sentry
+sentry_sdk.init(
+    dsn="https://0f39c498caa85ccde3f244a5bfcc2210@o4506010011828224.ingest.sentry.io/4506010013335552",
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)
