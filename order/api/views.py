@@ -60,7 +60,7 @@ class OrderCreateAPIView(CreateAPIView):
         # Definisci il mittente, il destinatario e il contenuto dell'email
         subject = f'Grazie per il tuo ordine delle gomme {order.wheel.brand}!'
         message = 'Il tuo ordine è stato ricevuto e verrà elaborato a breve.'
-        from_email = 'noreply@gomme_usate.com'
+        from_email = 'skrypnyk81@gmail.com.com'
         recipient_list = [order.email]  # Assumendo che "email" sia un campo del tuo modello Order
 
         # Invia l'email
