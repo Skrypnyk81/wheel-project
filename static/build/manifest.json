@@ -1,0 +1,41 @@
+{
+  "index.css": {
+    "file": "assets/index-0ef8be61.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "css": [
+      "assets/index-0ef8be61.css"
+    ],
+    "dynamicImports": [
+      "src/views/WheelDetail.vue",
+      "src/views/OrderWheel.vue"
+    ],
+    "file": "assets/index-ded90911.js",
+    "isEntry": true,
+    "src": "index.html"
+  },
+  "src/views/OrderWheel.vue": {
+    "file": "assets/OrderWheel-3cb903bb.js",
+    "imports": [
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/OrderWheel.vue"
+  },
+  "src/views/WheelDetail.css": {
+    "file": "assets/WheelDetail-77a0331d.css",
+    "src": "src/views/WheelDetail.css"
+  },
+  "src/views/WheelDetail.vue": {
+    "css": [
+      "assets/WheelDetail-77a0331d.css"
+    ],
+    "file": "assets/WheelDetail-bf638c3d.js",
+    "imports": [
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/WheelDetail.vue"
+  }
+}
