@@ -28,7 +28,9 @@ class WheelAPIView(GenericAPIView):
 
 class WheelsListAPIView(ListAPIView):
     serializer_class = WheelListSerializers
-    queryset = Wheel.objects.all()
+
+    def get_queryset(self):
+        return Wheel.objects.filter(on_sale=True)
 
 
 class FilterListAPIView(APIView):
