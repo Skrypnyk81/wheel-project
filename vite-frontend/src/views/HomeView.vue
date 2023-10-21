@@ -1,5 +1,19 @@
 <template>
   <div class="container">
+    <form @submit="navigateToSearch" class="row gy-2 gx-3 align-items-center">
+      <div class="col-auto">
+        <input type="text" v-model="formData.width" class="form-control" placeholder="Larghezza" aria-label="width" required>
+      </div>
+      <div class="col-auto">
+        <input type="text" v-model="formData.ratio" class="form-control" placeholder="Altezza" aria-label="ratio" required>
+      </div>
+      <div class="col-auto">
+        <input type="text" v-model="formData.diameter" class="form-control" placeholder="Diametro" aria-label="diameter" required>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-primary mb-1">Cerca <i class="bi bi-search"></i></button>
+      </div>
+    </form>
     <div class="container mt-4">
         <div v-for="diameter in diameters" :key="diameter">
           <h3 class="mb-3">Diametro: {{ diameter }}</h3>
@@ -31,7 +45,12 @@ export default {
   name: "HomeView",
   data() {
     return {
-      wheels: []
+      wheels: [],
+      formData: {
+      width: "",
+      ratio: "",
+      diameter: ""
+      }
     }
   },
   methods: {
@@ -49,12 +68,21 @@ export default {
     filteredWheels(diameter) {
       return this.wheels.filter(wheel => wheel.diameter === diameter);
     },
+    navigateToSearch(event) {
+      event.preventDefault();
+      this.$router.push(this.searchRoute);
+    }
   },
   computed: {
     diameters() {
       const diameters = this.wheels.map(wheel => wheel.diameter);
       return [...new Set(diameters)].sort((a, b) => a - b);
     },
+    searchRoute() {
+        const jsonData = JSON.stringify(this.formData);
+        console.log(jsonData)
+        return `/search?data=${encodeURIComponent(jsonData)}`;
+    }
   },
   created() {
     document.title = "Ruote";
