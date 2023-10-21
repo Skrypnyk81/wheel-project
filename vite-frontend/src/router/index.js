@@ -21,6 +21,12 @@ const router = createRouter({
       component: () => import("../views/OrderWheel.vue"),
       props: true
     },
+    {
+      path: "/search",
+      name: "search",
+      component: () => import("../views/SearchWheel.vue"),
+      props: true
+    },
   ]
 })
 
