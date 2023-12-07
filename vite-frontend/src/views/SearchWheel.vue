@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <form @submit="navigateToSearch" class="row gy-2 gx-3 align-items-center">
+    <div class="container">
+        <form @submit="handleSubmit" class="row gy-2 gx-3 align-items-center">
       <div class="col-auto">
         <input type="text" v-model="formData.width" class="form-control" placeholder="Larghezza" aria-label="width" required>
       </div>
@@ -11,14 +11,12 @@
         <input type="text" v-model="formData.diameter" class="form-control" placeholder="Diametro" aria-label="diameter" required>
       </div>
       <div class="col-auto">
-        <button class="btn btn-primary mb-1">Cerca <i class="bi bi-search"></i></button>
+        <button type="submit" class="btn btn-primary pb-1">Cerca <i class="bi bi-search"></i></button>
       </div>
     </form>
     <div class="container mt-4">
-        <div v-for="diameter in diameters" :key="diameter">
-          <h3 class="mb-3">Diametro: {{ diameter }}</h3>
           <div class="row">
-            <div class="col-md-4 mb-4" v-for="wheel in filteredWheels(diameter)" :key="wheel.brand">
+            <div class="col-md-4 mb-4" v-for="wheel in wheels" :key="wheel.brand">
               <div class="card-body shadow rounded">
                 <img :src="wheel.images[0]?.image" class="img-thumbnail" :alt="wheel.brand" />
                 <div class="card-body ms-1">
@@ -32,7 +30,6 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
 </template>
@@ -42,7 +39,7 @@ import { axios } from '../common/api.service';
 import { endpoints } from '../common/endpoints';
 
 export default {
-  name: "HomeView",
+  name: "SearchWheelView",
   data() {
     return {
       wheels: [],
@@ -54,39 +51,29 @@ export default {
     }
   },
   methods: {
-    async getWheels() {
-      let endpoint = endpoints["listWheel"];
-      try {
-        const response = await axios.get(endpoint);
-        this.wheels = response.data;
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-        alert(error.response.statusText);
-      }
+    async handleSubmit(event) {
+        if (event) {
+            event.preventDefault();
+        }
+        
+        let endpoint = endpoints["filterWheel"]; 
+        try {
+            const response = await axios.post(endpoint, this.formData);
+            this.wheels = response.data;
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+            alert(error.response.statusText);
+        }
     },
-    filteredWheels(diameter) {
-      return this.wheels.filter(wheel => wheel.diameter === diameter);
-    },
-    navigateToSearch(event) {
-      event.preventDefault();
-      this.$router.push(this.searchRoute);
-    }
-  },
-  computed: {
-    diameters() {
-      const diameters = this.wheels.map(wheel => wheel.diameter);
-      return [...new Set(diameters)].sort((a, b) => a - b);
-    },
-    searchRoute() {
-        const jsonData = JSON.stringify(this.formData);
-        console.log(jsonData)
-        return `/search?data=${encodeURIComponent(jsonData)}`;
-    }
   },
   created() {
-    document.title = "Ruote";
-    this.getWheels();
+    document.title = "Ricerca";
+    if (this.$route.query.data) {
+        // If data is passed in the URL, set it to formData and perform a search
+        this.formData = JSON.parse(decodeURIComponent(this.$route.query.data));
+        this.handleSubmit();
+    }
   }
-}
+  }
 </script>
