@@ -10,7 +10,7 @@ class Wheel(models.Model):
     ]
     width = models.IntegerField(verbose_name="Larghezza", null=True, blank=True)
     ratio = models.IntegerField(verbose_name="Altezza", null=True, blank=True)
-    diameter = models.IntegerField(verbose_name="Diametro", null=True, blank=True)
+    diameter = models.CharField(verbose_name="Diametro", null=True, blank=True)
     load = models.IntegerField(verbose_name="Carico", null=True, blank=True)
     speed = models.CharField(verbose_name="Velocità", max_length=2, null=True, blank=True)
     season = models.CharField(verbose_name="Stagione", max_length=50, choices=SEASON_CHOICES, default="Invernali",
