@@ -19,6 +19,7 @@ class OrderInline(admin.StackedInline):
 class CustomerAdmin(admin.ModelAdmin):
     exclude = ('slug',)
     inlines = [ImagesInLine, OrderInline]
+    search_fields = ['brand', 'dot', 'width', 'ratio', 'diameter']
 
 
 admin.site.register(Wheel, CustomerAdmin)
