@@ -95,7 +95,7 @@ export default {
     }
   },
   created() {
-    document.title = "Ruote";
+    document.title = "Nora pneumatici";
     this.getWheels();
   }
 }
