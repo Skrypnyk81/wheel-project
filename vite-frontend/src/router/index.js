@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import ContactsView from '../views/ContactsView.vue'
 
 const router = createRouter({
   history: createWebHistory("/"),
@@ -26,6 +27,11 @@ const router = createRouter({
       name: "search",
       component: () => import("../views/SearchWheel.vue"),
       props: true
+    },
+    {
+      path: '/',
+      name: 'contacts',
+      component: ContactsView
     },
   ]
 })
