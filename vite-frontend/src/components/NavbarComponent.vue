@@ -2,7 +2,7 @@
   <nav class="navbar navbar-dark bg-primary">
     <div class="container">
       <router-link :to="{name: 'home'}" class="navbar-brand">
-        Gomme usate
+        Home
       </router-link>
       <button class="btn btn-outline-warning" type="submit">Contatti</button>
     </div>
