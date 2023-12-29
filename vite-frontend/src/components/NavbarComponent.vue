@@ -4,7 +4,9 @@
       <router-link :to="{name: 'home'}" class="navbar-brand">
         Home
       </router-link>
-      <button class="btn btn-outline-warning" type="submit">Contatti</button>
+      <router-link :to="{name: 'contacts'}">
+        <button class="btn btn-outline-warning" type="submit">Contatti</button>
+      </router-link>
     </div>
   </nav>
 </template>
