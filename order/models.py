@@ -6,7 +6,7 @@ class Wheel(models.Model):
     SEASON_CHOICES = [
         ("Estivi", "Estivi"),
         ("Invernali", "Invernali"),
-        ("Per tutte le stagioni", "Per tutte le stagioni"),
+        ("4 stagioni", "4 stagioni"),
     ]
     width = models.IntegerField(verbose_name="Larghezza", null=True, blank=True)
     ratio = models.IntegerField(verbose_name="Altezza", null=True, blank=True)
