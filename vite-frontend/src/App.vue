@@ -3,13 +3,16 @@
     <NavbarComponent />
   </div>
   <div class="container">
-    <p>Denys Gomme usate di qualità</p>
-    <p>Spedizione in tutta Italia, con il corriere BRT, <span class="bolded">PAGAMENTO ALLA CONSEGNA</span></p>
+    <p>Guida Sicuro, Risparmia con Stile: I Nostri Pneumatici Usati fanno la Differenza!</p>
+    <br>
+    <p>Spedizione è <span class="bolded">COMPRESA</span> nel prezzo, spediamo in tutta Italia, con il corriere BRT, <span class="bolded">PAGAMENTO ALLA CONSEGNA</span></p>
+    <br>
   </div>
   <router-view />
   <footer class="text-black text-center py-3">
     <div class="container">
-        <p>© 2023 La Mia Azienda. Tutti i diritti riservati.</p>
+      <br>
+        <p>© 2024 Iukhymets Denys IN, via Enrico Fermi 4, Treviglio(BG) 24047. P.Iva 04356840167 Tutti i diritti riservati.</p>
     </div>
 </footer>
 </template>
