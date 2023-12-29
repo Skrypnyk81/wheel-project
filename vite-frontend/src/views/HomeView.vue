@@ -11,6 +11,15 @@
         <input type="text" v-model="formData.diameter" class="form-control" placeholder="Diametro" aria-label="diameter" required>
       </div>
       <div class="col-auto">
+        <select v-model="formData.season" id="season" class="form-control" required>
+          <option disabled value="">Stagione</option>
+          <option value="Estivi">Estivi</option>
+          <option value="Invernali">Invernali</option>
+          <option value="4 stagioni">4 stagioni</option>
+        </select>
+      </div>
+
+      <div class="col-auto">
         <button class="btn btn-primary mb-1">Cerca <i class="bi bi-search"></i></button>
       </div>
     </form>
@@ -25,7 +34,7 @@
                   <h5 class="card-title">{{ wheel.brand }}</h5>
                   <br>
                   <p class="card-text">Misura: {{ wheel.width }}/{{ wheel.ratio }}/{{ wheel.diameter }}</p>
-                  <p class="card-text">Battistrada: {{ wheel.tread }}%</p>
+                  <p class="card-text">Stagione: {{ wheel.season }}</p>
                   <p class="card-text">Prezzo: {{ wheel.price }} €</p>
                   <router-link :to="`/wheel/${wheel.id}`" class="btn btn-primary mb-1">Dettagli</router-link>
                 </div>
@@ -49,7 +58,8 @@ export default {
       formData: {
       width: "",
       ratio: "",
-      diameter: ""
+      diameter: "",
+      season: ""
       }
     }
   },
