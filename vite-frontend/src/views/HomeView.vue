@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <form @submit="navigateToSearch" class="row gy-2 gx-3 align-items-center">
-      <div class="col-auto">
+      <div class="col-md-auto">
         <input type="text" v-model="formData.width" class="form-control" placeholder="Larghezza" aria-label="width" required>
       </div>
-      <div class="col-auto">
+      <div class="col-md-auto">
         <input type="text" v-model="formData.ratio" class="form-control" placeholder="Altezza" aria-label="ratio" required>
       </div>
-      <div class="col-auto">
+      <div class="col-md-auto">
         <input type="text" v-model="formData.diameter" class="form-control" placeholder="Diametro" aria-label="diameter" required>
       </div>
-      <div class="col-auto">
+      <div class="col-md-auto">
         <select v-model="formData.season" id="season" class="form-control" required>
           <option disabled value="">Stagione</option>
           <option value="Estivi">Estivi</option>
@@ -18,8 +18,7 @@
           <option value="4 stagioni">4 stagioni</option>
         </select>
       </div>
-
-      <div class="col-auto">
+      <div class="col-md-auto">
         <button class="btn btn-primary mb-1">Cerca <i class="bi bi-search"></i></button>
       </div>
     </form>
