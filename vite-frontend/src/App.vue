@@ -12,7 +12,7 @@
   <footer class="text-black text-center py-3">
     <div class="container">
       <br>
-        <p>© 2024 Iukhymets Denys IN, via Enrico Fermi 4, Treviglio(BG) 24047. P.Iva 04356840167 Tutti i diritti riservati.</p>
+        <p>© 2024 Iukhymets Denys II, via Enrico Fermi 4, Treviglio(BG) 24047. P.Iva 04356840167 Tutti i diritti riservati.</p>
     </div>
 </footer>
 </template>
