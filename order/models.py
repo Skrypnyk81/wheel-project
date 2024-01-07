@@ -25,7 +25,8 @@ class Wheel(models.Model):
     slug = models.CharField(max_length=80, null=True)
 
     def __str__(self):
-        return f"{self.width}/{self.ratio}/{self.diameter}-{self.brand}-{self.load}{self.speed}-{self.dot}"
+        sale = 'Disponibili' if self.on_sale else 'Venduti'
+        return f"{self.width}/{self.ratio}/{self.diameter}-{self.brand}-{self.load}{self.speed}-{self.dot}-{sale}"
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.brand) + "-" + str(self.dot)
